@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/Projet-Dispo-Intervenants
-      - /node_modules
+      - /Projet-Dispo-Intervenants/node_modules
     ports:
       - "3000:3000"
     command: sh -c "npm run dev"
