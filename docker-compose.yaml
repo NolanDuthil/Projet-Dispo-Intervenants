@@ -1,24 +1,37 @@
+version: '3'
+
 services:
-  app:
+  frontend:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - .:/Projet-Dispo-Intervenants
+      - /node_modules
     ports:
       - "3000:3000"
-    volumes:
-      - .:/app # Monte le dossier actuel dans le conteneur
-      - /app/node_modules # Évite les conflits avec node_modules de l'hôte
-    environment:
-      NODE_ENV: development
+    command: sh -c "npm run dev"
 
-  db:
-    image: postgres:17
+  database:
+    image: postgres:13
     environment:
+      POSTGRES_DB: mydatabase
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: nom_de_la_base
+    ports:
+      - "5432:5432"
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"
+    depends_on:
+      - database
 
 volumes:
-  db-data:
+  db_data:
