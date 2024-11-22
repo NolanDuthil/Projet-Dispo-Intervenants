@@ -1,6 +1,14 @@
-// export type User = {
-//     id: string;
-//     name: string;
-//     email: string;
-//     password: string;
-//   };
+export type User = {
+    id: string;
+    nom: string;
+    prenom: string;
+    email: string;
+    password: string;
+  };
+
+  export type Intervenants = {
+    id: string;
+    nom: string;
+    prenom: string;
+    email: string;
+  };

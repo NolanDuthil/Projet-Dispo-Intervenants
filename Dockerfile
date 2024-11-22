@@ -3,7 +3,7 @@ FROM node:18-alpine
 WORKDIR /Projet-Dispo-Intervenants
 
 COPY package*.json ./
-RUN npm install --legacy-peer-deps --force
+RUN npm install
 
 # Copier le dossier src
 COPY . .

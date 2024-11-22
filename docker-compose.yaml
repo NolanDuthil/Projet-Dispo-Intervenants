@@ -10,6 +10,11 @@ services:
       - /Projet-Dispo-Intervenants/node_modules
     ports:
       - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mydatabase
     command: sh -c "npm run dev"
 
   database:
