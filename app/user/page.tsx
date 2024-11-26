@@ -9,7 +9,7 @@ export async function loader() {
 const UsersPage = ({ users }: { users: User[] }) => {
   return (
     <div>
-      <h1>Users</h1>
+      <h1>User</h1>
       <ul>
         {users.map((user) => (
           <li key={user.id}>
